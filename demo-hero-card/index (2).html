@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dudley Magpies About Card 3D Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="about">
+      <div class="about-grid">
+        <div class="about-text">
+          <h1>About Us</h1>
+          <p class="lead">
+            Demo of the 3D hover card for the Dudley Magpies website. This is a standalone preview so you can tweak the look and feel before dropping it into the real site.
+          </p>
+          <p>
+            On desktop, hover the card on the right: it tilts back in 3D, and the character image pops out towards you with a strong drop shadow. This is pure HTML + CSS, no JavaScript required.
+          </p>
+        </div>
+
+        <div class="about-card-wrap" aria-hidden="true">
+          <article class="about-card3d">
+            <!-- Inner layer that tilts back in 3D -->
+            <div class="about-card3d-inner">
+              <div class="about-card3d-bg"></div>
+
+              <!-- BACK PLATE: stays on the card face (behind the player) -->
+              <div class="about-card3d-content about-card3d-content--back">
+                <p class="about-card3d-copy">
+                  Dudley Redhead JRLFC – proudly representing our community from Minis through to Under 17s.
+                </p>
+              </div>
+            </div>
+
+            <!-- Player image that pops out on hover -->
+            <div class="about-card3d-character">
+              <img src="img/about-character.png" alt="Magpies player" class="about-card3d-image" />
+            </div>
+
+            <!-- FRONT OVERLAY PLATE: above player at rest, fades out on hover -->
+            <div class="about-card3d-content about-card3d-content--front">
+              <p class="about-card3d-copy">
+                Dudley Redhead JRLFC – proudly representing our community from Minis through to Under 17s.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>    
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dudley Redhead Junior Rugby League Club — Mighty Magpies</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="ticker" id="scoreTicker" aria-label="Latest result per team">
+    <div class="lane" id="tickerLane">
+      <div class="track" id="tickerTrack">
+        <span class="copy"><span class="chunk">Loading latest results…</span></span>
+        <span class="copy" aria-hidden="true"><span class="chunk">Loading latest results…</span></span>
+      </div>
+    </div>
+  </div>
+
+  <header id="site-header" role="navigation" aria-label="Primary">
+    <div class="nav container">
+      <div class="brand">
+        <img class="logo" src="img/dudley-logo.png" alt="Dudley Redhead Junior Rugby League Club logo">
+        <span>Dudley Redhead JRLC</span>
+      </div>
+      <nav class="menu" aria-label="Main menu">
+        <a href="#register">Register</a>
+        <a href="#shop">Shop</a>
+        <a href="#news">News</a>
+        <a href="#upcoming">Games/Results</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="hero" aria-label="Opening Splash">
+    <div class="hero-inner">
+      <aside class="games-card" id="upcoming" aria-label="Upcoming Games">
+        <h2>Upcoming Games</h2>
+        <ul class="game-list" id="gameList" aria-live="polite"></ul>
+        <p class="source">
+          Source: <a href="https://www.playrugbyleague.com/competitions/" target="_blank" rel="noopener">Play Rugby League / MySideline</a>
+          <span id="fullFixturesLink"></span>
+        </p>
+        <div class="badge" id="gameday-badge" hidden><span class="dot"></span><span>GAME DAY</span></div>
+      </aside>
+
+      <div class="pitch" id="pitch">
+        <svg id="pitchSvg" viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid slice" aria-label="Pitch">
+          <defs>
+            <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0b0b0b"/><stop offset="100%" stop-color="#020202"/>
+            </linearGradient>
+            <filter id="drops" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur" />
+              <feOffset dx="0" dy="6" result="off" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .35 0" />
+              <feBlend in="SourceGraphic" mode="normal" />
+            </filter>
+          </defs>
+          <rect x="0" y="0" width="1000" height="560" fill="url(#grass)"/>
+          <rect x="0" y="500" width="1000" height="2" fill="#e7e7e7" opacity=".9"/>
+          <g id="posts" transform="translate(780,260)">
+            <rect x="0"   y="0" width="12" height="220" fill="#f5f5f5"/>
+            <rect x="120" y="0" width="12" height="220" fill="#f5f5f5"/>
+            <rect id="crossbar" x="0" y="80" width="132" height="12" fill="#f5f5f5"/>
+          </g>
+          <g id="ballAnchor" filter="url(#drops)">
+            <g id="ball" class="bounce-once">
+              <ellipse cx="0" cy="0" rx="36" ry="22" fill="#ffffff"/>
+              <path d="M -28,-6 C -8,-16 8,-16 28,-6" stroke="#d9d9d9" stroke-width="2" fill="none"/>
+              <path d="M -28, 6 C -8, 16 8, 16 28, 6" stroke="#d9d9d9" stroke-width="2" fill="none"/>
+              <line x1="-4" y1="0" x2="4" y2="0" stroke="#d9d9d9" stroke-width="2"/>
+              <line x1="-2" y1="-4" x2="-2" y2="4" stroke="#d9d9d9" stroke-width="2"/>
+              <line x1="2" y1="-4"  x2="2"  y2="4" stroke="#d9d9d9" stroke-width="2"/>
+            </g>
+          </g>
+        </svg>
+        <h1 class="hero-title">Mighty Magpies</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="register" aria-label="Register">
+    <div class="container register-grid">
+      <div class="video">
+        <video id="promoVideo" src="" preload="metadata" muted playsinline poster="" aria-label="Club highlight video"></video>
+      </div>
+      <div class="register-cta">
+        <h2>Join the Magpies</h2>
+        <p class="lead">Register now to play junior rugby league with Dudley Redhead Junior Rugby League Club. All registrations are via the official MySideline system.</p>
+        <a class="btn animate-bounce" href="https://www.playrugbyleague.com/mysideline/" target="_blank" rel="noopener">Register at MySideline</a>
+
+        <!-- ===== Recent Results ===== -->
+        <div class="results-wrap" aria-label="Recent Results (compact)">
+          <div class="results-title">Recent Results</div>
+          <div class="results-scroll">
+            <table class="results-table" id="resultsTable" aria-describedby="resultsNote">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Round</th>
+                  <th>Home</th>
+                  <th>Score / Status</th>
+                  <th>Away</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTbody">
+                <tr><td colspan="5">Loading results…</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="results-note" id="resultsNote">Showing the most recent matches scraped from Play Rugby League.</p>
+        </div>
+        <!-- ===== End embedded results ===== -->
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="shop" aria-label="Shop Merchandise">
+    <div class="container shop">
+      <h2>Magpies Merchandise</h2>
+      <p class="lead" style="color:#2a2a2a">Browse official gear. We’ll plug in the local manufacturer’s feed next.</p>
+      <div class="shop-grid" role="list" aria-label="Shop grid">
+        <article class="card" role="listitem" aria-label="Magpies tee">
+          <div class="img">Image</div><div class="body"><strong>Magpies Tee</strong><span>$25.00</span></div>
+        </article>
+        <article class="card" role="listitem" aria-label="Home jersey">
+          <div class="img">Image</div><div class="body"><strong>Home Jersey</strong><span>$60.00</span></div>
+        </article>
+        <article class="card" role="listitem" aria-label="Club cap">
+          <div class="img">Image</div><div class="body"><strong>Club Cap</strong><span>$18.00</span></div>
+        </article>
+        <article class="card" role="listitem" aria-label="Hoodie">
+          <div class="img">Image</div><div class="body"><strong>Winter Hoodie</strong><span>$75.00</span></div>
+        </article>
+         <article class="card" role="listitem" aria-label="Hoodie">
+          <div class="img">Image</div><div class="body"><strong>Winter Hoodie</strong><span>$75.00</span></div>
+        </article>
+         <article class="card" role="listitem" aria-label="Hoodie">
+          <div class="img">Image</div><div class="body"><strong>Winter Hoodie</strong><span>$75.00</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark sponsors" id="sponsors" aria-label="Our Sponsors">
+    <div class="container">
+      <h2>Sponsors</h2>
+      <div class="sponsors-marquee" id="sponsorsMarquee" role="region" aria-label="Sponsors carousel" data-json-src="C:\Users\nelso\OneDrive\Desktop\DUDLEY\sponsors.json">
+        <div class="lane" aria-label="Row 1">
+          <div class="track" id="sponsorsTrack1" role="list"></div>
+        </div>
+        <div class="lane" aria-label="Row 2">
+          <div class="track" id="sponsorsTrack2" role="list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light about" id="about" aria-label="About the Club">
+    <div class="container">
+      <h2>About Us</h2>
+
+      <!-- ==== INLINE 3D CARD (surgical tweak) ==== -->
+      <style id="about3d-inline">
+        /* contain the float within #about only */
+        #about .container::after{content:"";display:table;clear:both;}
+
+        /* left-column box for the card — narrower so text condenses vertically */
+        #about .about3d.about3d-float{
+          float:left;
+          width:clamp(200px,23vw,300px);
+          margin:0 16px 12px 0; /* space from text */
+          position:relative; z-index:1; /* stay above sticker */
+        }
+
+        /* local 3D knobs (scoped to about only) */
+        #about .about3d{--tilt:5deg;--lift:18px;--overlayNudge:3.4px;--charYRest:-52%;--charYPop:-58%;}
+        #about .about3d-card{display:block;width:100%;aspect-ratio:5/7;perspective:1200px}
+        #about .about3d-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;backface-visibility:hidden;border-radius:16px;box-shadow:var(--shadow,0 8px 30px rgba(0,0,0,.25));transition:transform 300ms ease,filter 300ms ease}
+        #about .about3d-card:hover .about3d-inner{transform:rotateX(var(--tilt)) rotateY(calc(-1*var(--tilt))) translateY(calc(-1*var(--lift)))}
+        #about .about3d-plate{position:absolute;inset:0;background:#0a0a0a url('img/footycard-hero.png') center/cover no-repeat;border-radius:16px;transform:translateZ(.1px);backface-visibility:hidden}
+        #about .about3d-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px 14px;transform:translateZ(30px);backface-visibility:hidden;transition:transform 600ms ease}
+        #about .about3d-card:hover .about3d-overlay{transform:translateZ(40px) translateY(calc(-1*var(--overlayNudge)))}
+        #about .about3d-title{font:700 18px/1.1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em}
+        #about .about3d-character{position:absolute;left:50%;width:104%;max-width:none;transform:translate(-50%,var(--charYRest)) translateZ(60px);transition:transform 300ms ease;pointer-events:none;backface-visibility:hidden;filter:drop-shadow(0 12px 20px rgba(0,0,0,.45))}
+        #about .about3d-card:hover .about3d-character{transform:translate(-50%,var(--charYPop)) translateZ(80px)}
+
+        /* Anti-flicker / perf safeguards */
+        #about .about3d-inner,#about .about3d-plate,#about .about3d-overlay,#about .about3d-character{transform-style:preserve-3d;will-change:transform}
+
+        /* stack on mobile */
+        @media (max-width:800px){
+          #about .about3d.about3d-float{float:none;margin:16px auto 8px;display:block}
+          #about .about3d-title{font-size:16px}
+        }
+      </style>
+      <div class="about3d about3d-float" aria-hidden="true"
+        style="--charYRest:-5%; --charYPop:-15%; ">
+        <div class="about3d-card">
+          <div class="about3d-inner">
+            <div class="about3d-plate"></div>
+            <img class="about3d-character" src="img/about-character.png" alt="" style="width:90%;">
+            <div class="about3d-overlay">
+              <div class="about3d-title">Mighty Magpies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ==== END INLINE 3D CARD ==== -->
+
+      <p class="lead">Proudly community-based. 2020 marked our 50<sup>th</sup> season in junior rugby league.</p>
+      <p>We are the Dudley Redhead Junior Rugby League Club – the Mighty Magpies – playing at John Balcomb Field (Dudley). Our focus is on how we care for, grow, and develop youth through sport.</p>
+    </div>
+  </section>
+
+  <section class="dark social" id="news" aria-label="Social Feed">
+    <div class="container">
+      <h2>Facebook</h2>
+
+      <div class="social-row">
+        <div class="fb-wrap">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDudleyRedheadJrlfcMightyMagpies%2F&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+            width="500" height="700" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+
+        <div class="side-panel">
+          <div class="intro">
+            <h3 class="drop-in">The Hottest Swoops </h3>
+            <p class="drop-in delay">Our Facebook is the most up-to-date — tune in for scores, photos, and announcements.</p>
+          </div>
+          <figure class="side-image">
+            <img src="img/bird.png" alt="Magpie artwork alongside the Facebook feed">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feats hover-roller -->
+  <section class="light feats" id="feats" aria-label="Club Highlights">
+    <div class="container">
+      <h2>Club Highlights</h2>
+      <div class="feats-row" id="featsRow" role="list"></div>
+    </div>
+  </section>
+
+  <footer class="dark">
+    <div class="container">© <span id="year"></span> Dudley Redhead Junior Rugby League Club. All rights reserved.</div>
+  </footer>
+
+  <script type="application/json" id="sample-games">
+  [
+    {"date":"2025-08-15T14:00:00+10:00","opponent":"South Newcastle Lions","homeAway":"Home","venue":"John Balcomb Field","score":" - ","result":null},
+    {"date":"2025-08-22T18:00:00+10:00","opponent":"Central Charlestown Butcher Boys","homeAway":"Away","venue":"St John Oval","score":"24 - 18","result":"Win"}
+  ]
+  </script>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0" nonce="DUDLEYFB"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#f5f5f5;
+  background:
+    radial-gradient(circle at 10% 0%,#202020,#050505 60%),
+    radial-gradient(circle at 90% 120%,#191919,#000000 55%);
+}
+
+/* === shared controls for both text plates === */
+:root{
+  --textY: 90px;   /* vertical position of both plates (lower = bigger number) */
+  --textW: 19ch;   /* width of both plates (smaller = “in on the sides”) */
+}
+
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 16px;
+}
+
+.about{
+  max-width:1040px;
+  width:100%;
+}
+
+.about-grid{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:clamp(24px,6vw,48px);
+}
+
+.about-text{
+  flex:1 1 260px;
+  min-width:260px;
+}
+
+.about-text h1{
+  margin:0 0 12px;
+  font-size:clamp(28px,3vw,34px);
+  letter-spacing:0.03em;
+}
+
+.about-text .lead{
+  margin:0 0 10px;
+  font-size:15px;
+  line-height:1.6;
+  color:#d7d7d7;
+}
+
+.about-text p{
+  margin:0 0 10px;
+  font-size:14px;
+  line-height:1.7;
+  color:#c2c2c2;
+}
+
+.about-card-wrap{
+  flex:0 0 320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1400px;
+  perspective-origin:center bottom;
+}
+
+/* === Card + inner tilt layer === */
+
+.about-card3d{
+  position:relative;
+  width:min(320px,76vw);
+  aspect-ratio:3/4;
+  transform-style:preserve-3d;
+
+  /* NEW: tie transforms to vars so front & back share the same plane */
+  --tilt: 0deg;
+  --lift: 0px;
+  isolation:isolate;
+}
+
+.about-card3d-inner{
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  padding:20px 20px 28px;
+  background:
+    url("img/footycard-hero.png") center/cover no-repeat,
+    radial-gradient(circle at 20% 0%,rgba(255,255,255,.12),transparent 60%),
+    radial-gradient(circle at 80% 120%,rgba(255,255,255,.18),transparent 55%),
+    linear-gradient(145deg,#050505 0%,#262626 45%,#050505 100%);
+  box-shadow:0 22px 45px rgba(0,0,0,.75);
+  transform-origin:center bottom;
+  transform:rotateX(var(--tilt)) translateY(var(--lift));
+  transition:
+    transform .45s cubic-bezier(.16,.99,.29,1.01),
+    box-shadow .45s ease-out;
+  overflow:hidden;
+  cursor:pointer;
+  z-index:1; /* base card layer */
+  backface-visibility:hidden;
+}
+
+.about-card3d-bg{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 115%,rgba(255,255,255,.24),transparent 70%);
+  opacity:.6;
+  z-index:1;
+}
+
+/* ===== Text plates ===== */
+
+.about-card3d-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0; /* CHANGED: remove extra 16px that caused subtle misalign */
+  pointer-events:none;
+  color:#f5f5f5;
+  backface-visibility:hidden;
+}
+
+.about-card3d-copy{
+  margin:0;
+  font-size:16px;
+  max-width:var(--textW);       /* unified width */
+  line-height:1.5;
+  text-shadow:0 2px 6px rgba(0,0,0,.45);
+}
+
+/* Back plate: attached to card face (stays always) */
+.about-card3d-content--back{
+  z-index:2;
+  transform:translateY(var(--textY));
+}
+
+/* Front plate: perfectly aligned with back plate at rest */
+.about-card3d-content--front{
+  z-index:3;
+  inset:20px 20px 28px;                     /* match inner padding */
+  /* NEW: lock to SAME plane as inner so pixels line up 1:1 */
+  transform:rotateX(var(--tilt)) translateY(var(--lift)) translateZ(0) translateY(var(--textY));
+  opacity:1;
+  transition:opacity .12s ease-out, transform .12s ease-out;
+  transition-delay:.6s, .6s;                /* longer wait on mouse-leave so player gets back first */
+  will-change:opacity, transform;
+}
+
+/* === Character that pops out === */
+
+.about-card3d-character{
+  position:absolute;
+  left:50%;
+  top:52%;
+  width:60%;
+  aspect-ratio:3/4;
+  transform:translate3d(-50%,-60%,0) scale(.96); /* Z=0 at rest */
+  transform-origin:center center;
+  z-index:3;                                 /* fixed; no z-index flips */
+  pointer-events:none;
+  will-change:transform, filter;
+  transition:
+    transform .45s cubic-bezier(.16,.99,.29,1.01),
+    filter .45s ease-out;
+  backface-visibility:hidden;
+}
+
+.about-card3d-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.8));
+  backface-visibility:hidden;
+}
+
+/* Hover interactions */
+.about-card3d:hover{
+  --tilt: 18deg;
+  --lift: -12px;
+}
+
+.about-card3d:hover .about-card3d-inner{
+  /* unchanged box-shadow; transform now driven by vars */
+  box-shadow:0 34px 80px rgba(0,0,0,.9);
+}
+
+/* Fade ONLY the front overlay; keep it behind the player while fading */
+.about-card3d:hover .about-card3d-content--front{
+  opacity:0;
+  transform:rotateX(var(--tilt)) translateY(var(--lift)) translateZ(-2px) translateY(calc(var(--textY) + 4px)); /* behind player on hover */
+  transition-delay:0s, 0s;                    /* no delay entering hover */
+}
+
+/* Player moves forward smoothly (no z-index changes) */
+.about-card3d:hover .about-card3d-character{
+  transform:translate3d(-50%,-50%,150px) scale(1.12);
+  filter:drop-shadow(0 22px 36px rgba(0,0,0,.98));
+}
+
+/* Responsive */
+@media (max-width:768px){
+  .page{ padding:24px 12px; }
+  .about-grid{ flex-direction:column; align-items:flex-start; }
+  .about-card-wrap{ align-self:center; width:100%; }
+  .about-card3d{ margin-top:8px; }
+}
+/* === micro-align + higher pop overrides === */
+:root{
+  /* sub-pixel nudge to perfectly register front text to back text */
+  --overlayNudge: 3.4px;
+
+  /* character verticals */
+  --charYRest: -60%;
+  --charYPop:  -58%; /* raise final hover position (make more negative to go higher) */
+}
+
+/* raise character on hover (and define rest) */
+.about-card3d-character{
+  transform:translate3d(-50%, var(--charYRest), 0) scale(.96);
+}
+.about-card3d:hover .about-card3d-character{
+  transform:translate3d(-50%, var(--charYPop), 150px) scale(1.12);
+}
+
+/* lock front overlay to same plane AND micro-nudge to kill the ghosting */
+.about-card3d-content--front{
+  transform:rotateX(var(--tilt)) translateY(var(--lift)) translateZ(0)
+            translateY(calc(var(--textY) + var(--overlayNudge)));
+}
