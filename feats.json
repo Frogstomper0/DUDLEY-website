@@ -1,52 +1,54 @@
-[
-  {
-    "title": "Volunteers",
-    "subtitle": "From canteen shifts to coaching and ground setup — our volunteers power every match day.",
-    "tag": "Community",
-    "image_url": "img/feats/volunteers.png",
-    "alt_image_url": "img/feats/volunteers2.png",
-    "primary_link_url": "#",
-    "primary_link_text": "Read story",
-    "extended": "From dawn setup to pack-down, our canteen crew, coaches, managers and ground marshals keep the club humming. If you can spare an hour, we’ll find a job that fits — thank you, legends."
-  },
-  {
-    "title": "NRL Stage",
-    "subtitle": "Magpies juniors stepping out on NRL game day — an unforgettable taste of the big stage.",
-    "tag": "Game Day",
-    "image_url": "img/feats/NRLSTAGE.png",
-    "alt_image_url": "img/feats/nrlstage2.png",
-    "primary_link_url": "#",
-    "primary_link_text": "See photos",
-    "extended": "A moment they’ll never forget: running out under the lights, hearing the crowd and repping the black and white on NRL game day. Huge smiles, bigger memories."
-  },
-  {
-    "title": "Run DIPG Amber day",
-    "subtitle": "Running with purpose — fundraising, teamwork, and community spirit in every kilometre.",
-    "tag": "Fundraiser",
-    "image_url": "img/feats/charlies-run.png",
-    "alt_image_url": "img/feats/charlies-run2.png",
-    "primary_link_url": "#",
-    "primary_link_text": "Support",
-    "extended": "Magpies on the move for a great cause. Families, sponsors and mates chip in as our runners clock up the kilometres to raise vital funds for kids in need."
-  },
-  {
-    "title": "First All Girls Team",
-    "subtitle": "Dudley proudly boasts the first all-girls team in the Hunter, paving the way for future generations.",
-    "tag": "Pioneers",
-    "image_url": "img/feats/50seasons.png",
-    "alt_image_url": "img/feats/50seasons2.png",
-    "primary_link_url": "#",
-    "primary_link_text": "Club history",
-    "extended": "A milestone for our club and the region — girls leading from the front and inspiring the next wave of Magpies to give league a go."
-  },
-  {
-    "title": "50 Seasons Strong",
-    "subtitle": "1970 → 2020: celebrating life members, long-serving volunteers, and multi-generation Magpies.",
-    "tag": "Heritage",
-    "image_url": "img/feats/50seasons.png",
-    "alt_image_url": "img/feats/50seasons2.png",
-    "primary_link_url": "#",
-    "primary_link_text": "Club history",
-    "extended": "Half a century of black-and-white pride. Stories, photos and jerseys that tell the tale of a community club built on effort, respect and friendships."
-  }
-]
+{
+  "items": [
+    {
+      "title": "50 Seasons Strong",
+      "subtitle": "Half a century of Magpies pride",
+      "tag": "MILESTONE",
+      "image_url": "img/feats/50seasons.png",
+      "alt_image_url": "img/feats/50seasons2.png",
+      "primary_link_url": "#about",
+      "primary_link_text": "Our Story",
+      "extended": "Since 1973, Dudley Redhead JRL AFC has been a cornerstone of Newcastle rugby league. 50 years of tradition, community, and pride."
+    },
+    {
+      "title": "Charlie's Run",
+      "subtitle": "Supporting our community",
+      "tag": "COMMUNITY",
+      "image_url": "img/feats/charlies-run.png",
+      "alt_image_url": "img/feats/charlies-run2.png",
+      "primary_link_url": "#",
+      "primary_link_text": "Learn More",
+      "extended": "Our annual community event bringing together players, families, and supporters for a great cause."
+    },
+    {
+      "title": "NRL Stage",
+      "subtitle": "Playing on the big stage",
+      "tag": "ACHIEVEMENT",
+      "image_url": "img/feats/NRLSTAGE.png",
+      "alt_image_url": "img/feats/nrlstage2.png",
+      "primary_link_url": "#",
+      "primary_link_text": "Watch Now",
+      "extended": "Our junior teams getting the opportunity to showcase their skills at premier NRL venues."
+    },
+    {
+      "title": "Volunteers",
+      "subtitle": "100% community powered",
+      "tag": "PEOPLE",
+      "image_url": "img/feats/volunteers.png",
+      "alt_image_url": "img/feats/volunteers2.png",
+      "primary_link_url": "#",
+      "primary_link_text": "Get Involved",
+      "extended": "Every match, every training session, every success - powered entirely by our dedicated volunteers."
+    },
+    {
+      "title": "Youth Development",
+      "subtitle": "Building future stars",
+      "tag": "PROGRAM",
+      "image_url": "img/feats/medal.jpg",
+      "alt_image_url": "img/feats/medals.png",
+      "primary_link_url": "#",
+      "primary_link_text": "Join Now",
+      "extended": "Comprehensive development programs for all ages and skill levels, from grassroots to competitive."
+    }
+  ]
+}

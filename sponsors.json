@@ -1,35 +1,134 @@
 [
-  { "name": "Charlestown steering", "logo": "img/sponsors/charlestown-steering.png" },
-  { "name": "Kahibah sports club", "logo": "img/sponsors/kahbuahsportsclibn.png" },
-  { "name": "porter veritas", "logo": "" },
-  { "name": "sheils co property", "logo": "img/sponsors/shielsco.png" },
-  { "name": "urban empire collectables charlestown", "logo": "img/sponsors/urbanempire.jpg" },
-  { "name": "charlestown mcdonalds", "logo": "" },
-  { "name": "heritage meat co", "logo": "img/sponsors/heritage.jpg" },
-  { "name": "aj McDonnel electrical", "logo": "img/sponsors/ajmcdon.png" },
-  { "name": "mantles landscaping", "logo": "img/sponsors/mantles.jpg" },
-  { "name": "jefcon concrete", "logo": "img/sponsors/jefcon.webp" },
-  { "name": "jodie harrison labor", "logo": "img/sponsors/jodieharrison.jpg" },
-  { "name": "etch couriers", "logo": "img/sponsors/etch.jpg" },
-  { "name": "nandor smith tiling", "logo": "img/sponsors/nandor.jpg" },
-  { "name": "the urban bistro", "logo": "img/sponsors/urbanbistro.jpg" },
-  { "name": "Masterbuilt pools newcastle", "logo": "img/sponsors/masterbuiltpools.png" },
-  { "name": "signvault", "logo": "" },
-  { "name": "mauro swim team", "logo": "" },
-  { "name": "sharpes physio", "logo": "img/sponsors/sharpesphysio.png" },
-  { "name": "guardian safety solutions", "logo": "" },
-  { "name": "revo fitness", "logo": "img/sponsors/revo.jpg" },
-  { "name": "hunter geotechnical services", "logo": "" },
-  { "name": "fbc plumbing services", "logo": "" },
-  { "name": "morning market specialty coffee", "logo": "img/sponsors/morningmarket.jpg" },
-  { "name": "warners bay pharmacy", "logo": "" },
-  { "name": "cruden financial", "logo": "" },
-  { "name": "the medal man", "logo": "" },
-  { "name": "tyrepower", "logo": "" },
-  { "name": "willignham bathroom and plumbing", "logo": "" },
-  { "name": "the box camp", "logo": "" },
-  { "name": "northern beaches toyota", "logo": "" },
-  { "name": "mb plumbing", "logo": "" },
-  { "name": "newcastle car and truck rental", "logo": "img/sponsors/newcadtletruckrental.jpg" },
-  { "name": "ford infrastucutre services", "logo": "img/sponsors/fordinfr.jpg" }
+  {
+    "name": "AJ McDonough Earthmoving",
+    "logo": "img/sponsors/ajmcdon.png"
+  },
+  {
+    "name": "Charlestown Steering",
+    "logo": "img/sponsors/charlestown-steering.png"
+  },
+  {
+    "name": "Etch",
+    "logo": "img/sponsors/etch.jpg"
+  },
+  {
+    "name": "Ford Infrastructure",
+    "logo": "img/sponsors/fordinfr.jpg"
+  },
+  {
+    "name": "Heritage Bank",
+    "logo": "img/sponsors/heritage.jpg"
+  },
+  {
+    "name": "Jefcon",
+    "logo": "img/sponsors/jefcon.webp"
+  },
+  {
+    "name": "Jodie Harrison MP",
+    "logo": "img/sponsors/jodieharrison.jpg"
+  },
+  {
+    "name": "Kahbuah Sports Club",
+    "logo": "img/sponsors/kahbuahsportsclibn.png"
+  },
+  {
+    "name": "Mantles",
+    "logo": "img/sponsors/mantles.jpg"
+  },
+  {
+    "name": "Masterbuilt Pools",
+    "logo": "img/sponsors/masterbuiltpools.png"
+  },
+  {
+    "name": "Morning Market",
+    "logo": "img/sponsors/morningmarket.jpg"
+  },
+  {
+    "name": "Nandor",
+    "logo": "img/sponsors/nandor.jpg"
+  },
+  {
+    "name": "Newcastle Truck Rental",
+    "logo": "img/sponsors/newcadtletruckrental.jpg"
+  },
+  {
+    "name": "Revo Fitness",
+    "logo": "img/sponsors/revo.jpg"
+  },
+  {
+    "name": "Sharpes Physio",
+    "logo": "img/sponsors/sharpesphysio.png"
+  },
+  {
+    "name": "Shiels & Co",
+    "logo": "img/sponsors/shielsco.png"
+  },
+  {
+    "name": "Urban Bistro",
+    "logo": "img/sponsors/urbanbistro.jpg"
+  },
+  {
+    "name": "Urban Empire",
+    "logo": "img/sponsors/urbanempire.jpg"
+  },
+  {
+    "name": "Sponsor 19",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 20",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 21",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 22",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 23",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 24",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 25",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 26",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 27",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 28",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 29",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 30",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 31",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 32",
+    "logo": ""
+  },
+  {
+    "name": "Sponsor 33",
+    "logo": ""
+  }
 ]

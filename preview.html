@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dudley Magpies - Design Preview</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #111;
+            line-height: 1.6;
+        }
+        
+        .preview-header {
+            background: #000;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .preview-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .preview-header p {
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+        
+        .section-preview {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 4px solid #000;
+            display: inline-block;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .device-frame {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .device-header {
+            background: #000;
+            color: #fff;
+            padding: 1rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+        
+        .device-screen {
+            background: #fff;
+            padding: 1.5rem;
+        }
+        
+        .mobile-frame {
+            max-width: 375px;
+            margin: 0 auto;
+        }
+        
+        .desktop-frame {
+            max-width: 100%;
+        }
+        
+        .component {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #fff;
+            border: 2px solid #e5e5e5;
+            border-radius: 4px;
+        }
+        
+        .component-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-demo {
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        .hero-demo h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 12vw, 5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+        
+        .hero-demo p {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        
+        .stats-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #000;
+            color: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .stat {
+            padding: 1rem;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat:last-child { border-right: none; }
+        
+        .stat-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+        
+        .stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+        
+        .card-demo {
+            background: #fff;
+            border: 2px solid #e5e5e5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .card-image {
+            background: linear-gradient(135deg, #666 0%, #333 100%);
+            height: 150px;
+        }
+        
+        .card-content {
+            padding: 1rem;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            color: #666;
+            font-size: 0.875rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.875rem 1.75rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+        }
+        
+        .btn-secondary {
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        
+        .table-demo {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        
+        .table-demo thead {
+            background: #000;
+            color: #fff;
+        }
+        
+        .table-demo th {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .table-demo td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .typography-demo {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .type-sample h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .type-sample p {
+            color: #666;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        
+        .color-swatch {
+            text-align: center;
+        }
+        
+        .swatch {
+            height: 80px;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            border: 2px solid #e5e5e5;
+        }
+        
+        .swatch-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .swatch-code {
+            font-size: 0.75rem;
+            color: #666;
+            font-family: monospace;
+        }
+        
+        @media (min-width: 768px) {
+            .preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="preview-header">
+        <h1>Dudley Magpies Design Preview</h1>
+        <p>Mobile-First | Clean Modern Sports | Black & White | Bold Typography</p>
+    </div>
+    
+    <!-- MOBILE PREVIEW -->
+    <div class="section-preview">
+        <h2 class="section-title">Mobile Layout</h2>
+        <div class="preview-grid">
+            
+            <div class="device-frame mobile-frame">
+                <div class="device-header">Hero Section</div>
+                <div class="device-screen">
+                    <div class="hero-demo">
+                        <h1>
+                            <div style="font-size: 3rem;">MIGHTY</div>
+                            <div style="font-size: 4rem; margin-top: -0.3rem;">MAGPIES</div>
+                        </h1>
+                        <p>Dudley Redhead JRL AFC</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-frame mobile-frame">
+                <div class="device-header">Stats Bar</div>
+                <div class="device-screen">
+                    <div class="stats-demo">
+                        <div class="stat">
+                            <div class="stat-label">Next Game</div>
+                            <div class="stat-value">Mar 8</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Teams</div>
+                            <div class="stat-value">12+</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Est.</div>
+                            <div class="stat-value">1973</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-frame mobile-frame">
+                <div class="device-header">Content Cards</div>
+                <div class="device-screen">
+                    <div class="card-demo">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MILESTONE</span>
+                            <h3 class="card-title">50 Seasons Strong</h3>
+                            <p class="card-text">Half a century of Magpies pride</p>
+                            <a href="#" class="btn btn-secondary">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-frame mobile-frame">
+                <div class="device-header">Results Table</div>
+                <div class="device-screen">
+                    <table class="table-demo">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Grade</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 1</td>
+                                <td>U14</td>
+                                <td>24-18</td>
+                            </tr>
+                            <tr>
+                                <td>Feb 29</td>
+                                <td>U16</td>
+                                <td>32-20</td>
+                            </tr>
+                            <tr>
+                                <td>Feb 28</td>
+                                <td>Opens</td>
+                                <td>16-16</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- TYPOGRAPHY -->
+    <div class="section-preview">
+        <h2 class="section-title">Typography System</h2>
+        <div class="component">
+            <div class="typography-demo">
+                <div class="type-sample">
+                    <h2>Display Font (Oswald)</h2>
+                    <p>Used for: Headings, labels, stats, buttons</p>
+                    <p style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-top: 0.5rem;">
+                        THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+                    </p>
+                </div>
+                <div class="type-sample">
+                    <h2 style="font-family: 'Inter', sans-serif; text-transform: none; letter-spacing: 0;">Body Font (Inter)</h2>
+                    <p>Used for: Paragraphs, descriptions, tables</p>
+                    <p style="margin-top: 0.5rem;">
+                        The quick brown fox jumps over the lazy dog. Clean, readable, professional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- COLORS -->
+    <div class="section-preview">
+        <h2 class="section-title">Color Palette</h2>
+        <div class="component">
+            <div class="color-grid">
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #000000;"></div>
+                    <div class="swatch-label">Black</div>
+                    <div class="swatch-code">#000000</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #111111;"></div>
+                    <div class="swatch-label">Grey 900</div>
+                    <div class="swatch-code">#111111</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #666666;"></div>
+                    <div class="swatch-label">Grey 500</div>
+                    <div class="swatch-code">#666666</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #cccccc;"></div>
+                    <div class="swatch-label">Grey 300</div>
+                    <div class="swatch-code">#cccccc</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #f5f5f5; border: 2px solid #ccc;"></div>
+                    <div class="swatch-label">Grey 100</div>
+                    <div class="swatch-code">#f5f5f5</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #FFFFFF; border: 2px solid #ccc;"></div>
+                    <div class="swatch-label">White</div>
+                    <div class="swatch-code">#FFFFFF</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BUTTONS -->
+    <div class="section-preview">
+        <h2 class="section-title">Button Styles</h2>
+        <div class="component">
+            <a href="#" class="btn btn-primary">Primary Button</a>
+            <a href="#" class="btn btn-secondary">Secondary Button</a>
+        </div>
+    </div>
+    
+</body>
+</html>

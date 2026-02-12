@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dudley Magpies - Live Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #111;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 28px;
+            height: 24px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #000;
+            transition: 0.3s ease;
+        }
+        
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            max-height: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(255,255,255,0.03) 50px,
+                    rgba(255,255,255,0.03) 51px
+                );
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #fff;
+            line-height: 0.9;
+        }
+        
+        .mighty {
+            display: block;
+            font-size: clamp(3rem, 12vw, 6rem);
+            opacity: 0.9;
+        }
+        
+        .magpies {
+            display: block;
+            font-size: clamp(4rem, 15vw, 8rem);
+            margin-top: -0.1em;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #fff;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #000;
+            color: #fff;
+            border-top: 2px solid #fff;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 1rem;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-item:last-child { border-right: none; }
+        
+        .stat-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Section */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section:nth-child(even) {
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #000;
+        }
+        
+        /* Game Cards */
+        .games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .game-card {
+            background: #fff;
+            border: 2px solid #e5e5e5;
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: 0.3s ease;
+        }
+        
+        .game-card:hover {
+            border-color: #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .game-date {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-matchup {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-details {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        /* Ticker */
+        .ticker-section {
+            background: #000;
+            color: #fff;
+            padding: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .ticker-header {
+            text-align: center;
+            padding-bottom: 0.5rem;
+        }
+        
+        .ticker-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+        
+        .ticker-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-right: 1px solid rgba(255,255,255,0.2);
+            white-space: nowrap;
+        }
+        
+        .ticker-grade {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-right: 1.5rem;
+            opacity: 0.7;
+        }
+        
+        .ticker-matchup {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .ticker-score {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-left: 1.5rem;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.875rem 1.75rem;
+            border-radius: 4px;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-secondary {
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        
+        .btn-secondary:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        /* Cards */
+        .feats-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .feat-card {
+            background: #fff;
+            border: 2px solid #e5e5e5;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+        
+        .feat-card:hover {
+            border-color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .feat-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #666 0%, #333 100%);
+        }
+        
+        .feat-content {
+            padding: 1.5rem;
+        }
+        
+        .feat-tag {
+            display: inline-block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .feat-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feat-subtitle {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #111;
+            color: #fff;
+            padding: 4rem 0 1rem;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            color: #999;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .feats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .feats-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="mobile-nav">
+        <div class="nav-container">
+            <div class="logo-text">Dudley Magpies</div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="mighty">Mighty</span>
+                <span class="magpies">Magpies</span>
+            </h1>
+            <p class="hero-subtitle">Dudley Redhead JRL AFC</p>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-label">Next Game</span>
+            <span class="stat-value">Mar 8</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Teams</span>
+            <span class="stat-value">12+</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Est.</span>
+            <span class="stat-value">1973</span>
+        </div>
+    </div>
+
+    <!-- Upcoming Games -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Games</h2>
+            </div>
+            
+            <div class="games-list">
+                <div class="game-card">
+                    <div class="game-date">Sat, Mar 8, 2:00 PM</div>
+                    <div class="game-matchup">vs Charlestown Bluebags</div>
+                    <div class="game-details">
+                        <span>Home</span>
+                        <span>Dudley Oval</span>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-date">Sat, Mar 15, 3:30 PM</div>
+                    <div class="game-matchup">@ Warners Bay Bulldogs</div>
+                    <div class="game-details">
+                        <span>Away</span>
+                        <span>Bill Hobart Oval</span>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-date">Sat, Mar 22, 2:00 PM</div>
+                    <div class="game-matchup">vs Kotara Bears</div>
+                    <div class="game-details">
+                        <span>Home</span>
+                        <span>Dudley Oval</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="btn btn-secondary">View Full Fixtures</a>
+        </div>
+    </section>
+
+    <!-- Ticker -->
+    <section class="ticker-section">
+        <div class="ticker-header">
+            <h3>Latest Results</h3>
+        </div>
+        <div class="ticker-track">
+            <div class="ticker-item">
+                <span class="ticker-grade">U14</span>
+                <span class="ticker-matchup">Dudley vs Charlestown</span>
+                <span class="ticker-score">24-18</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-grade">U16</span>
+                <span class="ticker-matchup">Dudley vs Warners Bay</span>
+                <span class="ticker-score">32-20</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-grade">Opens</span>
+                <span class="ticker-matchup">Dudley vs Kotara</span>
+                <span class="ticker-score">16-16</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-grade">U12</span>
+                <span class="ticker-matchup">Dudley vs Cardiff</span>
+                <span class="ticker-score">28-14</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="ticker-item">
+                <span class="ticker-grade">U14</span>
+                <span class="ticker-matchup">Dudley vs Charlestown</span>
+                <span class="ticker-score">24-18</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-grade">U16</span>
+                <span class="ticker-matchup">Dudley vs Warners Bay</span>
+                <span class="ticker-score">32-20</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-grade">Opens</span>
+                <span class="ticker-matchup">Dudley vs Kotara</span>
+                <span class="ticker-score">16-16</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-grade">U12</span>
+                <span class="ticker-matchup">Dudley vs Cardiff</span>
+                <span class="ticker-score">28-14</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Highlights -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Club Highlights</h2>
+            </div>
+            
+            <div class="feats-row">
+                <div class="feat-card">
+                    <div class="feat-image"></div>
+                    <div class="feat-content">
+                        <span class="feat-tag">MILESTONE</span>
+                        <h3 class="feat-title">50 Seasons Strong</h3>
+                        <p class="feat-subtitle">Half a century of Magpies pride</p>
+                    </div>
+                </div>
+                
+                <div class="feat-card">
+                    <div class="feat-image"></div>
+                    <div class="feat-content">
+                        <span class="feat-tag">COMMUNITY</span>
+                        <h3 class="feat-title">Charlie's Run</h3>
+                        <p class="feat-subtitle">Supporting our community</p>
+                    </div>
+                </div>
+                
+                <div class="feat-card">
+                    <div class="feat-image"></div>
+                    <div class="feat-content">
+                        <span class="feat-tag">ACHIEVEMENT</span>
+                        <h3 class="feat-title">NRL Stage</h3>
+                        <p class="feat-subtitle">Playing on the big stage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dudley Magpies</div>
+                <p class="footer-text">© 2025 Dudley Redhead JRL AFC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
