@@ -185,6 +185,17 @@ const populateTicker = (results) => {
     const tickerTrack = document.getElementById('tickerTrack');
     if (!tickerTrack) return;
     
+    // Safety check - ensure results is an array
+    if (!Array.isArray(results)) {
+        console.error('Results is not an array:', results);
+        tickerTrack.innerHTML = `
+            <div class="ticker-item">
+                <span class="ticker-matchup">Results currently unavailable</span>
+            </div>
+        `;
+        return;
+    }
+    
     // Get latest result per team
     const dudleyResults = results
         .filter(r => /dudley redhead/i.test(r.home) || /dudley redhead/i.test(r.away))
@@ -223,6 +234,19 @@ const populateTicker = (results) => {
 const populateResultsTable = (results) => {
     const tbody = document.getElementById('resultsTbody');
     if (!tbody) return;
+    
+    // Safety check - ensure results is an array
+    if (!Array.isArray(results)) {
+        console.error('Results is not an array:', results);
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="4" style="text-align: center; padding: 2rem; color: #666;">
+                    Results currently unavailable. Please check back later.
+                </td>
+            </tr>
+        `;
+        return;
+    }
     
     const dudleyResults = results
         .filter(r => /dudley redhead/i.test(r.home) || /dudley redhead/i.test(r.away))
